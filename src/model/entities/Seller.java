@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import model.Dao.SellerDao;
+
 public class Seller  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -96,8 +98,8 @@ public class Seller  implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", bithDate=" + bithDate + ", baseSalary="
-				+ baseSalary + ", department=" + department + "]";
+		return "Seller Information: ID: " + id + ", Name: " + name + ", Email: " + email + ", BithDate: " + bithDate + ", BaseSalary: "
+				+ baseSalary + ", department=" + department + ".";
 	}
 	
 	
