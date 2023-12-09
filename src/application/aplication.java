@@ -26,6 +26,15 @@ public class aplication {
 		for ( Seller obj: list) {
 		System.out.println(obj);
 		}
+		
+		System.out.println(" ====   TEST 2 method findAll");
+		
+		List<Seller> listFindAll = sellerDao.findAll();
+		
+		for ( Seller findall: listFindAll) {
+		System.out.println(findall);
+		}
 	}
+	
 
 }
