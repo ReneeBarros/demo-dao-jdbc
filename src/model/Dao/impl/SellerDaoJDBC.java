@@ -25,21 +25,14 @@ public class SellerDaoJDBC implements SellerDao {
 	}
 
 	@Override
-	public void insert(Seller obj) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void update(Seller obj) {
 		PreparedStatement st = null;
 
 		try {
 			st = conn.prepareStatement(
 
-					"UPDATE seller "
-					+ "SET Name = ?, Email =?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
-					+ "WHERE Id =?");
+					"UPDATE seller " + "SET Name = ?, Email =?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
+							+ "WHERE Id =?");
 
 			st.setString(1, obj.getName());
 			st.setString(2, obj.getEmail());
@@ -47,11 +40,9 @@ public class SellerDaoJDBC implements SellerDao {
 			st.setDouble(4, obj.getBaseSalary());
 			st.setInt(5, obj.getDepartment().getId());
 			st.setInt(6, obj.getId());
-			
 
 			st.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 
@@ -64,8 +55,32 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
 
+		PreparedStatement st = null;
+		
+		try {
+			st = conn.prepareStatement(
+					"DELETE FROM seller WHERE Id = ?"
+					);
+		st.setInt(1, id);
+		
+		
+		
+		int valueT = st.executeUpdate();
+		
+		if (valueT==0) {
+			
+			
+			throw new DbException("Error ao digitar o codigo");
+		}
+		
+		}catch(SQLException e) {
+			
+			throw new DbException(e.getMessage());
+			
+		}finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
@@ -154,7 +169,6 @@ public class SellerDaoJDBC implements SellerDao {
 
 		}
 	}
-
 
 	@Override
 	public List<Seller> findAll() {

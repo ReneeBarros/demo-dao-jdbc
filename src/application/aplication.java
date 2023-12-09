@@ -53,6 +53,9 @@ public class aplication {
 		System.out.println("Done!");
 		
 		
+		System.out.println(" ====   TEST 6 Seller method deleteById");
+		sellerDao.deleteById(1);
+		System.out.println(" Delete Done!");
 		
 	}
 	
